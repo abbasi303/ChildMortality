@@ -1,69 +1,96 @@
-# ChildMortality
+# 🧒 Global Child Mortality Analysis & Risk Factors
 
-This repository analyzes, cleans, and models global child mortality data, with a focus on quality assurance, exploratory analysis, and predictive modeling. It leverages multiple open datasets to reveal trends, outliers, correlations, and country-by-country differences in child mortality, malnutrition, and regional factors.
-
-## Project Overview
-
-The project consists of:
-- **Data loading and cleaning:** Integrates multiple sources, checks for missing values, and applies imputation and cleaning strategies.
-- **Quality assurance (QA):** Performs checks to ensure data reliability and integrity throughout the workflow.
-- **Exploratory Data Analysis (EDA):** Visualizes and summarizes trends in child mortality and malnutrition rates across countries, years, and genders.
-- **Statistical and Predictive Analysis:** Applies correlation analysis, regression models, and clustering algorithms to uncover relationships and forecast trends.
-- **Reporting:** Generates summary statistics and QA reports for documentation and transparency.
-
-## Data Sources
-
-- **Child_Mortality_Rate.csv:** Country-level annual data for child mortality (ages 1-4), total population, and mortality rate by gender and year.
-- **World_Malnutrition_Data.csv:** Under-five mortality rates by country, gender, and year, with units as deaths per 1000 live births.
-- **Region_Data.csv:** Regional malnutrition indicators (e.g., stunting rates) by area and year.
-
-_Cleaned versions of these datasets are generated and saved in the `cleaned_data/` directory._
-
-## Main Notebook
-
-- **QA.ipynb:**  
-  The central notebook for the entire workflow, organized into:
-  1. **Data Loading:** Reads and summarizes data, inspects missing values.
-  2. **Data Cleaning:** Handles missing data via interpolation and imputation; drops unnecessary columns.
-  3. **EDA:** Visualizes year-by-year and country-by-country mortality trends, highlights top countries, and explores gender differences.
-  4. **Statistical Analysis:** Examines correlations between mortality, population, and malnutrition. Detects outliers.
-  5. **Predictive Analysis:**  
-     - Linear Regression to model trends over time  
-     - Polynomial Regression for complex patterns  
-     - K-Means clustering to group countries with similar mortality/population profiles
-  6. **Reporting:** Generates and prints QA reports for each dataset.
-
-## How to Use
-
-1. **Clone the repository and install requirements** (Python 3, pandas, numpy, seaborn, matplotlib, scikit-learn, scipy).
-2. **Download or update data files** in the project root as needed.
-3. **Open and run `QA.ipynb`** in Jupyter Notebook or JupyterLab to reproduce the analysis and generate cleaned data.
-
-## File Structure
-
-```
-|-- QA.ipynb                      # Main Jupyter notebook
-|-- Child_Mortality_Rate.csv      # Raw child mortality dataset
-|-- World_Malnutrition_Data.csv   # Raw malnutrition/under-five mortality dataset
-|-- Region_Data.csv               # Raw regional malnutrition/stunting dataset
-|-- cleaned_data/
-|    |-- cleaned_child_mortality_data.csv
-|    |-- cleaned_malnutrition_data.csv
-|    |-- cleaned_region_data.csv
-```
-
-## Key Features
-
-- **Automated QA checks** at every stage of the pipeline
-- **Visualization** of trends by year, country, and gender
-- **Outlier detection** for high-mortality countries/years
-- **Predictive modeling** for future mortality trends
-- **Clustering** for comparative analysis across countries
-
-## License
-
-This project is for academic and research purposes. Data sources may have their own licenses—please consult the original providers.
+This project analyzes child mortality (age 1–4) using multiple global datasets, combining demographic, regional, and malnutrition data to uncover key mortality trends and drivers. It includes statistical QA, visualizations, clustering, and a basic predictive model.
 
 ---
 
-For any questions or contributions, please open an issue or pull request!
+## 📌 Objectives
+
+- Examine trends in child mortality by gender and region from 1950–2020.
+- Identify countries with persistently high mortality.
+- Explore correlations between mortality, population, and malnutrition.
+- Apply clustering and regression to interpret and predict outcomes.
+
+---
+
+## 📊 Datasets Used
+
+| Dataset | Description | Rows | Key Fields |
+|--------|-------------|------|------------|
+| **Child Mortality** | Mortality rate, population, gender, country/year | 30,940 | `Mortality Rate`, `Total Population`, `Gender` |
+| **Malnutrition** | Nutrition status by country/year | 30,901 | `OBS_VALUE`, `Country`, `Year` |
+| **Region Data** | Country-level metadata | 5,302 | `Geographic Area`, `OBS_VALUE` |
+
+---
+
+## 🧼 Data Cleaning & QA
+
+- All datasets cleaned: 0% missing after preprocessing.
+- Joined across `Country` and `Year`.
+- Verified data types and value ranges.
+- Outlier checks revealed 3,050 high-mortality observations.
+- Correlation analysis shows:
+  - **Mortality ↔ Malnutrition**: **+0.88** (strong)
+  - **Mortality ↔ Population**: weakly negative
+
+---
+
+## 📈 Visual Explorations
+
+### 📉 Mortality Trends (1950–2020)
+- Steady global decline from >2 to <0.3 deaths per 1000.
+- Gender gap slightly favors females in later years.
+
+### 🌍 Top 10 Countries by Avg. Mortality
+![Top 10](./top10_countries.png)
+
+### 📊 Mortality by Gender Over Time
+![Gender Trend](./mortality_by_gender.png)
+
+### 📊 Correlation Heatmap
+![Correlation](./correlation_heatmap.png)
+
+### 📊 Smoothed Trend by Country
+![Trend by Country](./trend_by_country.png)
+
+### 🔍 K-Means Clustering
+- 3 clusters based on `Mortality Rate` and `Population` show low-, mid-, and high-risk countries.
+
+---
+
+## 📈 Predictive Modeling
+
+### 🔹 Linear Regression
+- Inputs: Year
+- Output: Smoothed Mortality Rate
+- **R² score**: 0.138 (basic model)
+- Shows decreasing trend but suggests potential for more advanced models.
+
+---
+
+## 🧠 Key Insights
+
+- High mortality persists in Sub-Saharan African countries.
+- Strong link found between malnutrition and child deaths.
+- Population size has weak correlation with mortality.
+- Gender-based mortality differences have shrunk over time.
+
+---
+
+## 🚀 Future Work
+
+- Integrate multivariate regression (malnutrition, spending, conflict).
+- Use LSTM or ARIMA for time-series forecasting.
+- Build a Streamlit app for interactive exploration.
+
+---
+
+## 👤 Author
+
+**Ussayed Shakeel Abbasi**  
+📫 usalcgg18@gmail.com  
+🔗 [LinkedIn](https://linkedin.com/in/abbasi303) | [GitHub](https://github.com/abbasi303)
+
+---
+
+📁 *This project demonstrates cross-domain data integration, trend analysis, and simple modeling — with strong real-world implications for global development.*
