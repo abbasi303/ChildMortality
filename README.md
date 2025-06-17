@@ -41,20 +41,24 @@ This project analyzes child mortality (age 1–4) using multiple global datasets
 - Steady global decline from >2 to <0.3 deaths per 1000.
 - Gender gap slightly favors females in later years.
 
-### 🌍 Top 10 Countries by Avg. Mortality
-![Top 10](./top10_countries.png)
+![Yearly Mortality QA](./Images/trend_qa.png)
 
-### 📊 Mortality by Gender Over Time
-![Gender Trend](./mortality_by_gender.png)
+### 📊 Mortality by Gender
+![Gender Mortality Trend](./Images/gender_mortality_trend.png)
+![Smoothed Gender Mortality](./Images/smoothed_gender_trend.png)
 
-### 📊 Correlation Heatmap
-![Correlation](./correlation_heatmap.png)
+### 🌍 Top 10 Countries by Mortality
+![Top 10 Countries](./Images/top10_countries.png)
 
-### 📊 Smoothed Trend by Country
-![Trend by Country](./trend_by_country.png)
+### 📊 Country-Specific Trends
+![Trend by Country](./Images/trend_by_country.png)
 
-### 🔍 K-Means Clustering
-- 3 clusters based on `Mortality Rate` and `Population` show low-, mid-, and high-risk countries.
+### 📈 Correlation Heatmaps
+![Correlation QA](./Images/correlation_qa.png)
+![Correlation Heatmap](./Images/correlation_heatmap.png)
+
+### 🔍 Clustering by Risk
+![Clustering](./Images/clustering.png)
 
 ---
 
